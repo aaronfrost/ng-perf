@@ -1,0 +1,33 @@
+<div class="header">
+  <h1>Busting Out</h1>
+
+  <h2>An Example of some perf issues that I was having</h2>
+</div>
+
+<div class="content" >
+
+  <div class="pure-g">
+    <div class="pure-u-1-6"><p></p></div>
+    <div class="pure-u-2-3">
+      <p>
+        <button ng-click="getData()">Get Data</button>
+      </p>
+    </div>
+    <div class="pure-u-1-6"><p></p></div>
+  </div>
+  <div class="pure-u-1" style="border-bottom:1px solid #EEE;"></div>
+  <div class="pure-g">
+    <div ng-repeat="list in taskLists | limitTo:20" class="pure-u-1-{{taskLists.length}}">
+      <div class="header">List{{$index+1}}</div>
+      <div class="tasks-container">
+        <div class="task-container" ng-repeat="task in list" ng-mousedown="mouseDownTask(task, $event)" ng-mouseup="mouseUpTask(task)">
+          <div class="task-desc">{{task.desc}}</div>
+          <div class="task-assignees">
+            <span ng-repeat="assignee in task.assignees track by $index" user-widget="assignee"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

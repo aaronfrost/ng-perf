@@ -16,11 +16,15 @@ app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
 
 //RETURN index.html for all angular routes. Wish there was a better way. For now, this is it.
-var routes = ['show-hide', 'contact'];
-routes.forEach(function(r){
-  app.get('/'+r, function(req, res){
+app.set('paths',require('./ngpaths'));
+app.get('paths').forEach(function(r){
+  app.get(r.path, function(req, res){
     res.sendFile(process.cwd()+ '/public/index.html');
   });
+});
+
+app.get('/paths', function(req, res){
+  res.json(app.get('paths'));
 });
 
 

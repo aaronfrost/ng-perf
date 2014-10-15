@@ -1,0 +1,84 @@
+<div class="header">
+  <h1><code>$digests</code></h1>
+
+  <h2>Let's Explain The Digest Cycle</h2>
+</div>
+
+<div class="content">
+  <h2 class="content-subhead">Changes Create Digests</h2>
+  <p>
+
+    <div class="hover-section pos-rel pointer">
+      This is when Angular dirty-checks everything
+      <img class="hover-bit pure-img-responsive pos-abs" src="../../img/never_ending.jpg" alt=""/>
+    </div>
+    <div>
+      <i>The is the best and worst part of Angular</i>
+    </div>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+
+  <h2 class="content-subhead">Let's Show Off <code>$rootScope.$digest</code></h2>
+  <p>
+    <ul>
+      <li>Add a hover event to THIS LIST</li>
+      <li>Let's add a <code>$watcher</code> method in the menu</li>
+      <li>hovers: {{hoverCount || 0}}</li>
+    </ul>
+    <i>Watch what happens</i>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+  <h2 class="content-subhead">Rolling Changes</h2>
+  <p>
+    Change in one part of your app can cause changes in another part. Because of this, a change
+    in one place causes Angular to check the entire app for rolling changes that may need
+    to be reflected elsewhere.
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+  <h2 class="content-subhead">Let's Look At The <code>$digest</code> code</h2>
+  <p>
+    <i>in angular.js, line: 12,740</i>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+  <h2 class="content-subhead pointer" ng-click="waysLimit = waysLimit + 1;">How do we cause <code>$rootScope.$digest</code>'s</h2>
+  <p>
+  <ul>
+    <li ng-repeat="way in ways | limitTo:waysLimit">{{way}}</li>
+  </ul>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+  <h2 class="content-subhead">Adding Events</h2>
+  <p>
+    <div>All ngAction methods cause a <code>$digest</code> cycle</div>
+  <i>Don't use the following methods if you can help it, and you probably can</i>
+  <ul>
+    <li>ng-mouseover</li>
+    <li>ng-mouseenter</li>
+    <li>ng-mouseleave</li>
+    <li>ng-keypress</li>
+    <li>ng-keydown</li>
+    <li>ng-keyup</li>
+    <li>ng-scroll</li>
+  </ul>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+  <h2 class="content-subhead"><code>$scope.$apply</code> vs. <code>$scope.$digest</code></h2>
+  <p>
+    <div><b><code>$scope.$digest</code></b></div>
+    <img class="pure-img-responsive" src="../../img/onescope.png" alt=""/>
+  </p>
+  <p>
+    <div><b><code>$scope.$apply</code></b></div>
+    <img class="pure-img-responsive" src="../../img/allscopes.jpg" alt=""/>
+  </p>
+  <p style="margin-bottom: 80%;"></p>
+
+
+
+</div>

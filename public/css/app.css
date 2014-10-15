@@ -1,0 +1,57 @@
+.hover-section .hover-bit{
+  display: none;
+}
+
+.hover-section:hover .hover-bit{
+  display: inherit;
+}
+.pos-abs{
+  position: absolute;
+}
+.pos-rel{
+  position: relative;
+}
+.pointer{
+  cursor: pointer;
+}
+
+.task-container{
+  border: 1px solid gray;
+  border-radius: 4px;
+  margin: 3px;
+  padding: 3px;
+  min-height: 60px;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  box-shadow: inset 1px 0px 32px 4px #EEE;
+}
+
+.task-container .task-desc{
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: lighter;
+}
+
+.task-container .task-assignees{
+  position: absolute;
+  bottom: 0px;
+}
+
+.user-widget {
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 3px;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.user-widget .img-container.medium{
+  width:15px;
+  height: 15px;
+  overflow: initial;
+  display: flex;
+}

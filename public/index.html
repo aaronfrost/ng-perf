@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en" ng-app="baseApp">
+<html lang="en" ng-app="perfApp">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
         content="This is to demo some performance examples in Angular">
-
+  <link rel="shortcut icon" href="/favicon.ico">
   <title>ng-perf &ndash; </title>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-
+  <link rel="stylesheet" href="css/app.css">
   <!--[if lte IE 8]>
   <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
   <![endif]-->
@@ -28,10 +28,10 @@
 
   <div id="menu" ng-controller="menuController" ng-cloak>
     <div class="pure-menu pure-menu-open">
-      <a class="pure-menu-heading" href="#">NG-BASE</a>
+      <a class="pure-menu-heading" href="#">NG-PERF</a>
 
       <ul>
-        <li ng-repeat="option in menuOptions" ng-click="selectOption($index)"><a ng-href="{{option.path}}" ng-class="{active: selectedOption == option}">{{option.name}}</a></li>
+        <li ng-repeat="option in menuOptions" ng-click="selectOption($index)"><a ng-href="{{option.path}}" ng-class="{active: selectedOption === option}">{{option.name}}</a></li>
 
 
         <li class="menu-item-divided pure-menu-selected">
@@ -49,8 +49,11 @@
 </div>
 
 
+<script src="js/lodash.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="js/angular.js"></script>
 <script src="js/angular-route.js"></script>
+<script src="js/angular-gist.js"></script>
 <script src="js/ng-stats.js"></script>
 
 <!--BOOTSTRAP THE APP-->
@@ -63,6 +66,14 @@
 <script src="js/start/startCtrl.js"></script>
 <script src="js/show-hide/showHideCtrl.js"></script>
 
-<!--<script src="js/ui.js"></script>-->
+<!--DIGESTS-->
+<script src="js/digests/digestCtrl.js"></script>
+<script src="js/examples/exampleCtrl.js"></script>
+
+<!--DIRECTIVES-->
+<script src="js/services/userService.js"></script>
+<script src="js/directive/user-widget.js"></script>
+
+<script src="js/ui.js"></script>
 </body>
 </html>

@@ -1,0 +1,28 @@
+- LESS WATCHERS
+  - Explain a Watcher
+  - Talk about digest cycle
+    - $rootScope.$digest
+      - digests all children scopes
+      - each scope has $$watchers
+      - each template binding adds a watcher
+      - template bindings
+    - Show the digest code
+    - Two ways to apply external changes in our code
+      - Talk about $scope.$digest
+        - This scope down
+      - Talk about $scope.$apply
+        - rootscope Down
+
+- FASTER WATCHERS
+  - Filters affect $digest
+    - show filter with zero ms turn around
+    - show filter with 1 ms turnaround
+    - watch the perf get really bad, real quick
+
+- STOP THE INSANITY
+  - ng-mouse(move|enter|up|leave)
+  - ng-key(press|down|up)
+
+- LESS SHOW/HIDE
+  - Use Link Function
+
