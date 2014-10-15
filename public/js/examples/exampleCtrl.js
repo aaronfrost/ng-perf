@@ -9,8 +9,17 @@ angular.module('perfApp').controller('exampleCtrl', function($scope, $location, 
   $scope.moveTask = moveTask;
 
   function resetTaskLists(){
-    $scope.taskLists = [[],[],[],[],[]];
+    initTaskLists();
     $scope.taskLimit = 20;
+  }
+
+  function initTaskLists(){
+    //THIS SHOULD COME FROM THE SERVER. I AM MAKING SOME LISTS.
+    $scope.taskLists = [1, 2, 3, 4, 5].map(function(num){
+      return 'List-'+num;
+    }).map(function(name){
+      return new TaskList({name:name});
+    });
   }
 
   function getData(){
@@ -21,19 +30,26 @@ angular.module('perfApp').controller('exampleCtrl', function($scope, $location, 
   function organizeData(data){
     resetTaskLists();
     data.data.forEach(function(task, i){
-      $scope.taskLists[i%5].push(task);
-      $scope.taskLists.forEach(function(l){l.splice($scope.taskLimit, 1000)});
+      //IGNORE THIS. DOCTORING DATA
       task.assignees = task.assignees.map(function(a){
         return a.user.SSN;
       });
+
+      //Make Task object from JSON object
+      task = new Task(task);
+
+      //Put Task into a TaskList
+      $scope.taskLists[i%5].addTask(task);
+
+
     });
 
   }
 
   function mouseDownTask(task, $event){
-    var list = getListForTask(task);
-    var index = list.indexOf(task);
-    list.splice(index, 1);
+    getListForTask(task).removeTask(task);
+
+
     $scope.floaty = getFloaty($event);
     $scope.mouseDown = true;
     $scope.taskToDrag = task;
@@ -46,13 +62,9 @@ angular.module('perfApp').controller('exampleCtrl', function($scope, $location, 
   }
 
   function getListForTask(task){
-    var myList;
-    $scope.taskLists.forEach(function(list){
-      if(list.indexOf(task) >= 0){
-        myList = list;
-      }
+    return _.find($scope.taskLists, function(list){
+      if(list.hasTask(task)) return list;
     });
-    return myList;
   }
 
   function moveTask(task){

@@ -20,7 +20,7 @@
     <div ng-repeat="list in taskLists | limitTo:20" class="pure-u-1-{{taskLists.length}}">
       <div class="header">List{{$index+1}}</div>
       <div class="tasks-container">
-        <div class="task-container" ng-repeat="task in list" ng-mousedown="mouseDownTask(task, $event)" ng-mouseup="mouseUpTask(task)">
+        <div class="task-container" ng-repeat="task in list.tasks" ng-mousedown="mouseDownTask(task, $event)" ng-mouseup="mouseUpTask(task)">
           <div class="task-desc">{{task.desc}}</div>
           <div class="task-assignees">
             <span ng-repeat="assignee in task.assignees track by $index" user-widget="assignee"></span>
